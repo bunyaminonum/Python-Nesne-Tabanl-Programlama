@@ -50,4 +50,4 @@ Aşağıdaki kodların açıklamasını okumadan önce kendiniz yazmaya ve anlam
 #### Öznitelik değer ataması
 ![oznitelik_atama](https://user-images.githubusercontent.com/59376910/153707586-5551b5cd-efc9-41de-9ac4-72568b1bd4ab.png)
 
-
+Burada Personel sınıfının özniteliklerini (attributes) tanımlamış olduk.  Buradaki öznitelikere sınıf öznitelikleri (class attributes) adı verilir. Bu özniteliklere erişirken birçok programlama dilinde olduğu gibi nokta (.) erişim belirtecini kullanıdık. Burada ekrana yazdırdığımız zam oranı, atadığımız isim ve soyisim örnek özniteliklerdir. İsterseniz diğerlerini de ekrana bastırabilir, değer atayabilir veya ek öznitelik ekleyebilirsiniz. Dikkat ettiyseniz  özniteliklere erişirken (Personel.zam_orani)  sınıf ismini yazarken parantez kullanmadık. Parantez kullandığımızda farklı bir şey tanımlamış oluyoruz.  Bundan biraz sonra bahsedilecek.
