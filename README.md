@@ -199,3 +199,42 @@ Pyhton'da override işlemini anlamak için önce override kelimesinin anlamını
 ![override](https://user-images.githubusercontent.com/59376910/153711836-5f2c0551-5611-486a-9938-0cd62d8a912d.png)
 
 Gördüğünüz üzere Mudur sınıfı ile oluşturduğumuz nesnenin zam oranı 1.2 olarak güncellenmiş. Bu nesneden zam_yap fonksiyonunu çağırdığımızda zam_yap fonksiyonu yeni zam oranı üzerinden zam uygulayacaktır, zira yukarıdaki örnekte de bunu görebiliyoruz. Her iki nesneye de 10000 birim maaş vermemize rağmen farklı oranlarda zam uygulanmış. Buna override denir.
+
+# Kapsülleme (Encapsulation)
+Kapsülleme, nesne tabanlı programlamada özniteliklere sınıf dışından kontrollü erişim sağlanmasını sağlar, yani getter ve setter fonksiyon mantığını kullanarak verilerimizi kontrol altına alıyoruz. Hatırlarsanız kalıtım konusunu anlatırken Personel adında bir sınıfımız vardı. O sınıfa geri dönelim ve kapsüllemeyi onun üzerinden anlatalım:
+
+![personel (1)](https://user-images.githubusercontent.com/59376910/153712095-01c5f60c-cfb4-4157-9d00-40975e142bcc.png)
+
+Dikkat ettiyseniz zam_orani değişkeni sınıf özniteliği olarak tanımlanmış. Bu özniteliğe sınıf dışından erişim sağlayabilir, manipüle edebiliriz. Şimdi biz sınıf dışından zam_orani özniteğini manipüle etmeye çalışalım:
+
+![personel_sinifi_son](https://user-images.githubusercontent.com/59376910/153712104-095ddafe-3369-44e4-88c9-7597e3706c15.png)
+
+Yukarıda tanımladığımız per1 nesnesine ait zam oranını değiştirerek zam yaptık, yani zam oranını manipüle ettik. Burada zam_orani özniteliğine negatif değer de verebilirdik. Bu durum bizim için bir sorun teşkil edecektir, çünkü zam oranı herkesin erişebileceği ve istediği gibi değerini değiştirebildiği bir öznitelik olmaması gerekiyor.  Erişilse bile kontrollü olarak getter ve setter fonksiyon mantığı ile dolaylı olarak erişilmesi gerekir. Bu durumda yapmamız gereken şey zam oranını kapsüllemek olacaktır. Python'da gizlemek (private) istediğimiz özniteliklerin önüne iki tane alt çizgi ekliyoruz. Bu şekilde özniteliklerimize dışarıdan erişilip müdahele dilmesini önlemiş oluyoruz. Hemen bir örnekle zam_orani özniteliğimize sınıf dışından erişilmesini engelleyelim:
+
+![zam_orani_kapsulleme](https://user-images.githubusercontent.com/59376910/153712120-d342eeb7-cfe2-49c2-ad5b-baefc9866125.png)
+
+Yukarıda da göründüğü gibi zam_orani özniteliğimizin önüne iki tane alt çizgi ekleyerek onu private hale getirdik. Şimdi bu özniteliğimize sınıf dışından erişmeye çalışalım:
+
+![personel_zam_oranina_erisim](https://user-images.githubusercontent.com/59376910/153712136-7611e727-e9e5-4873-ae52-565e5e7a6d5a.png)
+
+Görüldüğü üzere Personel sınıfımızdaki __zam_orani özniteliğine sınıf dışından erişmek istediğimizde bize hata veriyor. Bu özniteliğe kontrollü erişmek istersek getter setter fonksiyon mantığını burada kullanabiliriz. Şimdi özniteliğimize kontrollü erişebilmek ve değerini değiştirebilmek için iki tane fonksiyon tanımlayalım:
+
+![getter_setter_fonksiyonlari](https://user-images.githubusercontent.com/59376910/153712146-d69ab9b0-7c8b-4dff-b9d0-d943cb2252bc.png)
+
+Burada get_zam_orani fonksiyonu sayesinde __zam_orani özniteliğine sınıf dışından dolaylı olarak erişim sağlayabiliyoruz. set_zam_orani fonksiyonu sayesinde de __zam_orani özniteliğimizin değerini kontrollü olarak değiştirebiliyoruz.  Bu fonksiyona yeniOran parametresini float tipinde yollayarak değerin 0 dan büyük 2 den küçük olmasını zorunlu kıldık. Aynı zamanda try except yapısından yararlanarak veri sayı olarak atanması gereken argümanın farklı bir veri tipi gelmesi durumda kullanıcıya uyarıda bulunarak değer atama işleminin gerçekleşmesini engelliyoruz. Şimdi get_zam_orani fonksiyonunu kullanarak private durumundaki __zam_orani özniteliğimize erişmeye çalışalım:
+
+![personel_private](https://user-images.githubusercontent.com/59376910/153712164-38237d75-0135-4733-b57a-b0955831f2ce.png)
+
+Gördüğünüz gibi get_zam_orani fonksiyonu sayesinde private halindeki __zam_orani özniteliğimize dolaylı olarak (fonksiyon yardımıyla) erişebildik. Şimdi de set fonksiyonumuzu kullanarak __zam_orani özniteliğimize yeni değer atayalım:
+
+![set_zam_orani](https://user-images.githubusercontent.com/59376910/153712172-255b9cee-5d6c-4a3b-aaa4-b3fcadaa2d4f.png)
+
+Burada da set_zam_orani fonksiyonunu kullanarak kontrollü olarak değer atadık. Şimdi sayı yerine string değer atamayı deneyelim:
+
+![set_zam_orani2](https://user-images.githubusercontent.com/59376910/153712181-4dda8440-cf4e-41f3-91e0-ca08625f217c.png)
+
+Gördüğünüz set_zam_orani fonksiyonuna string değer atamak istediğimizde try catch yapısı devreye giriyor ve TypeError hatası fırlatıyor. Yeni değer oranına dikkat ederseni yeni zam oranının değişmediğini görürsünüz. Bu şekilde özniteliğimizi kontrol altına almış durumdayız gibi görünüyor. Peki değer sayı olup negatif olsa ne olur? Hemen görelim?
+
+![set](https://user-images.githubusercontent.com/59376910/153712195-0e013782-9ffa-46aa-9805-17d25c0fb1e5.png)
+
+Gördüğünüz gibi burada da oran değişmedi, çünkü set_zam_orani fonksiyonu içinde if else yapısı sayesinde yalnızca pozitif değer geldiğinde yeni değerin atanmasını sağlıyoruz. Eğer 2 den büyük değer verilirse de aynı şekilde değeri değiştirmeyecektir. Kapsülleme işlemini tıpkı özniteliklerde kullanıldığı gibi fonksiyonlarda da kullanılabilir.
