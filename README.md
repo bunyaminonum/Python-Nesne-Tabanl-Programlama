@@ -36,3 +36,8 @@ Python class yapısı, Python nesne tabanlı proramlamanın yapı taşlarından 
 #### Aşağıdaki kodları inceleyiniz.
 ![Python_class_tanimlama](https://user-images.githubusercontent.com/59376910/153707361-83d01730-e64f-4940-a3e0-80dd5be1dc65.png)
 
+Bildiğiniz üzere Python'da fonksiyon tanımlamak için "def" anahtar kelimesini kullanıyorduk. Python sınıf (class) yapısı tanımlamak için de "class" anahtar kelimesi kullanılır. Yukarıdaki resimde "class" anahtar kelimesinden sonra gelen "Personel" kelimesi ise tanımladığımız sınıfın ismidir.  Buraya siz herhangi bir isim verebilirsiniz, ama Python nesne tabanlı programlamada sınıf (class) isminin ilk harfi  büyük  olur. Bu yazım şekli zorunluluk olmasa da programcılıkta bu bir âdet haline gelmiştir. Python'da bildiğiniz üzere curly bracket (süslü parantez) kullanılmıyor, sadece girintilerden faydalınılıyor. Resimde de gözüktüğü üzere class tanımladıktan sonra tıpkı fonksiyonlarda yaptığımız gibi burada da özelliklerimizi ve fonksiyonlarımızı bir tab boşluk bırakarak yazıyoruz. 
+Yukarıda tanımlanan class yapısını aşağıda gösterildiği şekilde yani parantezli olarak da tanımlayabiliriz. Parantezli ve parantezsiz arasındaki farklı Inheritence (kalıtım) konusunu işlerken anlayacaksınız.
+![Python_class_tanimlama2](https://user-images.githubusercontent.com/59376910/153707431-6192b535-8947-46e2-8d94-d000000211a8.png)
+
+
