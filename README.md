@@ -34,3 +34,5 @@ Python class yapısı, Python nesne tabanlı proramlamanın yapı taşlarından 
 
 ## Pyhon Class (Sınıf) Tanımlama
 #### Aşağıdaki kodları inceleyiniz.
+![Python_class_tanimlama](https://user-images.githubusercontent.com/59376910/153707361-83d01730-e64f-4940-a3e0-80dd5be1dc65.png)
+
