@@ -1,6 +1,6 @@
 # Python Nesne Tabanlı Programlama
 
-[Nesne Tabanlı Programlama (OOP) Nedir?](https://github.com/bunyaminonum/Python-OOP#nesne-tabanl%C4%B1-programlama-oop-nedir)
+[Nesne Tabanlı Programlama (OOP) Nedir?](#Nesne-Tabanlı-Programlama-(OOP)-Nedir?)
 
 ## Nesne Tabanlı Programlama (OOP) Nedir?
 Nesne tabanlı programlama, ingilizce de OOP(Object Oriented Programming) olarak isimlendirilen, yazılım tasarımını işlevler ve mantıktan ziyade veriler veya nesneler etrafında organize eden bir programlama modelidir.
