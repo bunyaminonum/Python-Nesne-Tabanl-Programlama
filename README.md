@@ -51,3 +51,12 @@ Aşağıdaki kodların açıklamasını okumadan önce kendiniz yazmaya ve anlam
 ![oznitelik_atama](https://user-images.githubusercontent.com/59376910/153707586-5551b5cd-efc9-41de-9ac4-72568b1bd4ab.png)
 
 Burada Personel sınıfının özniteliklerini (attributes) tanımlamış olduk.  Buradaki öznitelikere sınıf öznitelikleri (class attributes) adı verilir. Bu özniteliklere erişirken birçok programlama dilinde olduğu gibi nokta (.) erişim belirtecini kullanıdık. Burada ekrana yazdırdığımız zam oranı, atadığımız isim ve soyisim örnek özniteliklerdir. İsterseniz diğerlerini de ekrana bastırabilir, değer atayabilir veya ek öznitelik ekleyebilirsiniz. Dikkat ettiyseniz  özniteliklere erişirken (Personel.zam_orani)  sınıf ismini yazarken parantez kullanmadık. Parantez kullandığımızda farklı bir şey tanımlamış oluyoruz.  Bundan biraz sonra bahsedilecek.
+
+Yukarıdaki kod örneklerinden de anlaşılacağı gibi, biz istediğimiz zaman istediğimiz özniteliğe erişebilir,değer atayabilir veya ek öznitelik ekleyebiliriz. Fakat bir sorunumuz var; biz bir Personel() nesnesi tanımlarken bu şekilde sadece bir nesne tanımlayabilyoruz. Bizim istediğimiz şey ise, Aynı Personel() sınıfından "Ahmet", "Mehmet", "Veli" gibi farklı "nesneler (objects)" tanımlamaktır. Bir sonraki başlıkta bu konuyu inceliyor olacağız.
+
+## Sınıfların Örneklenmesi
+Sınıflar belli birtakım özelliklere sahip grupları tanımlamak için harika yapılardır. Fakat önceki yazıda da bahsettiğimiz gibi, bu sınıfların işe yaraması için bir sınıftan birden çok nesne (object) yaratmamız gerekiyor. Aşağıdaki kodları dikkatlice inceleyin.
+
+![instance_Python](https://user-images.githubusercontent.com/59376910/153708058-c17bffc2-b0e4-4396-96f0-b506f67e05a2.png)
+
+
