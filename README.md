@@ -59,4 +59,34 @@ Sınıflar belli birtakım özelliklere sahip grupları tanımlamak için harika
 
 ![instance_Python](https://user-images.githubusercontent.com/59376910/153708058-c17bffc2-b0e4-4396-96f0-b506f67e05a2.png)
 
+Burada Personel() sınıfını Ahmet adında bir değişkene atadık. Teknik dilde bu işleme örnekleme (instantiation) adı verilir. 
+
+Burada Ahmet artık Personel() sınıfının bir nesnesi (object) haline geldi. Örnekleme sayesinde tek sınıftan teorik olarak aynı özniteliklere fakat farklı özelliklere sahip sınırsız sayıda nesneler (object) oluşturabiliriz. Şimdi gelin bu nesnelere değer atamanın nasıl yapıldığını ve aynı değerlere sahip iki nesnenin eşit olup olmadığına bakalım.
+
+## Nesnelere Değer Atama
+Bir nesneye nasıl değer atanır görelim:
+
+![nesneye_deger_atama](https://user-images.githubusercontent.com/59376910/153708306-758c1076-4a94-4756-a3c1-4895125185ec.png)
+
+Python'da nesneye değer atama işlemi; "nesne_ismi.öznitelik_ismi = değer " şeklinde tanımlanır. Nesneye erişimek istediğimizde ise; "nesne_ismi.öznitelik_ismi" kalıbını kullanabiliriz. Bu örnekte Ahmet nesnesine isim ve yaş tanımladık. Önceki konularda da belirtildiği gibi, dilerseniz bu özniteliklere yenilerini ekleyebilir ve farklı değerler atayabilirsiniz. Şimdi de aynı sınıftan farklı bir nesne oluşturup, isim ve yaş ataması yapalım:
+
+![nesne_tanimlama_2](https://user-images.githubusercontent.com/59376910/153708327-2be28a0f-2284-41f5-bb9a-58c0fd89783e.png)
+
+Şimdi de "Ahmet" ve "Mehmet" nesnelerine atadığımız özellikleri ekrana bastıralım:
+
+![nesne_ozelliklerine_erisim](https://user-images.githubusercontent.com/59376910/153708336-8492a19b-369c-44cb-b949-a30261b9bcc9.png)
+
+Şimdi de Personel() sınıfına "kabiliyet" özniteliğini bir liste olarak tanımlayalım. Personel sınıfına tanımladığımız tüm öznitelikler aşağıdaki gibi oldu:
+
+![personel_oznitelikler](https://user-images.githubusercontent.com/59376910/153708352-03b8cce0-491c-47c7-9b7f-41bdc35b1db5.png)
+
+Şimdi de "Ahmet" nesnesine kabiliyet ekleyelim. "Mehmet" nesnesine bu öznitelik ile ilgili henüz herhangi bir değer atamış değiliz buna dikkat edelim.
+
+![Ahmet_kabiliyet_ekleme](https://user-images.githubusercontent.com/59376910/153708362-7540c759-beee-47ce-a76b-d67ec0822767.png)
+
+Şimdi de Ahmet ve Mehmet nesnelerinin kabiliyetlerini ekrana yazdıralım:
+
+![kabiliyetler](https://user-images.githubusercontent.com/59376910/153708372-a556003f-cdb6-4c84-80aa-668f8bd46cca.png)
+
+
 
