@@ -149,3 +149,53 @@ Burada önceden anlatılmayan iki terim var; @classmethod ve cls. @classmethod b
 ![class_method_2](https://user-images.githubusercontent.com/59376910/153711377-bd000940-ee9e-4de2-b1d0-e59bf0614808.png)
 
 Görüldüğü gibi personel_sayisini_goruntule metodunu nesne tanımlamadan sınıf adıyla tanımladık ve çıktı olarak ta 0 sonucunu aldık. Eğer biz bu fonksiyonu tanımlamadan önce @classmethod bezeyicisini kullanmasaydık bu fonksiyona sınıf adıyla erişmeye çalıştığımızda hata alacaktık, çünkü bir nesne tanımlamadan örnek metodları kullanamayız.
+
+# Statik Metotlar
+Python nesne tabanlı programlama içinde şimdiye kadar iki tane fonksiyon gördük; biri örnek metodu (instance method) diğeri de sınıf metodu (class method). Metod türünü belirtmesi adına Örnek metotları için self parametresini, sınıf metotları için ise cls parametresini kullanıyorduk. Örnek metodunu örnek öznitelikleri üzerinde işlemler yapmak için, sınıf metodunu da sınıf öznitelikleri üzerinde işlemler yapmak için kullanıyorduk. Eğer ikisini de kullanmaya ihtiyacımız yoksa bu fonksiyon statik metot (static method) olarak adlandırılır. Bilindiği gibi sınıf metodu tanımlarken @classmethod bezeyicisini kullanıyorduk. Static metot tanımlamak için de @staticmethod bezeyicisini (decorator) kullanacağız. Bu bezeyicileri kullanmamızın nedeni, sınıf içinde tanımlanan fonksiyonlar varsayılan olarak örnek metodu olarak tanımlanır, yani sınıfa atanacak ilk parametre örnek sınıfını temsil ediyor (self). Mesela bezeyici olmadan bir fonksiyon tanımlayıp ilk argümanını cls olarak tanımlarsanız bu, sınıf metodu değil, örnek metodu olarak tanımlanır. Bu yüzden fonksiyonlarda ilk parametrenin hangi metodu temsil edeceğini belirlemek için bezeyicileri kullanıyoruz. Şimdi bir örnek ile üç metodu da kullanalım:
+
+![static_method](https://user-images.githubusercontent.com/59376910/153711592-0cfe2f9f-2449-4554-9a05-900c989711f7.png)
+
+Görüldüğü üzere statik_metot fonksiyonunun içinde nesne özniteliklerini veya sınıf özniteliklerini kullanmamızı gerektirecek bir durum yok. Bundan dolayı @staticmethod bezeyicisini kullanarak fonksiyonu statik hale getirdik. Eğer hem sınıf hem de nesne özniteliklerine ihtiycaç duymayacağınız bir fonksiyon yaratacaksanız, fonksiyonunuzu statik metot olarak tanımlamanız mantıklı olacaktır. Şimdi bu metoda hem sınıftan hem de nesneden erişmeye çalışalım:
+
+![access_static_methods](https://user-images.githubusercontent.com/59376910/153711639-78aeefbc-1cac-4d89-85ea-06c8ae3f0335.png)
+
+Görüldüğü gibi static_metot fonksiyonununa sınıf metotları gibi hem nesneden hem de sınıf adıyla erişim sağlayabildik. Sınıf metotları ve statik metotlar birbirine çok benzer, sadece herhangi bir sınıf veya örnek özniteliği kullanılmadığı durumlarda cls parmetresi boşuna tanımlanmış olacaktır. Bu yüzden bu durumda statik metot kullanılır.
+
+# Kalıtım (Inheritance) 
+Kalıtım (inheritance), Python nesne tabanlı programlamanın en önemli konularından biridir. Kalıtımı bu kadar önemli kulan şey kod tekrarını engelemesidir. Kalıtıma aynı zamanda "miras alma" da denilebilir. Python'da miras alma yaparken iki terimden bahsedebiliriz bunlar; child class ve parent class sınıflarıdır. child class yani çocuk sınıfı ebeveny sınıftan miras alır. Bunları biraz sonra ayrıntılı olarak ele alacağız. Şimdi önce bir Personel isminde bir sınıf tanımlayalım:
+
+Kalıtım (inheritance), Python nesne tabanlı programlamanın en önemli konularından biridir. Kalıtımı bu kadar önemli kulan şey kod tekrarını engelemesidir. Kalıtıma aynı zamanda "miras alma" da denilebilir. Python'da miras alma yaparken iki terimden bahsedebiliriz bunlar; child class ve parent class sınıflarıdır. child class yani çocuk sınıfı ebeveny sınıftan miras alır. Bunları biraz sonra ayrıntılı olarak ele alacağız. Şimdi önce bir Personel isminde bir sınıf tanımlayalım:
+
+![personel](https://user-images.githubusercontent.com/59376910/153711685-38399504-308d-43c8-9d00-ce4f61b4e1a5.png)
+
+Şimdi de Mudur isminde bir sınıf olusturalım:
+
+![mudur_sinifi](https://user-images.githubusercontent.com/59376910/153711694-916c1f60-86a3-4733-bbd6-777300ac357b.png)
+
+Mudur sınıfını tanımlarken şimdiye kadar görmediğiniz sınıf tanınlama şekli ile karşılaştınız. Burada amaçlanan şey, "Personel sınıfındaki tüm öznitelikleri ve metotların Mudur sınıfında da kullanılmasını sağla" yani Mudur sınıfı Personel sınıfını miras alıyor. Bu durumda Mudur sınıfı child class, Personel sınıfı ise parent class oluyor. Python da bir sınıfı miras almak istersek, oluşturduğumuz sınıfa bir parantez açarak parantez içine miras almak istediğimiz sınıfın ismini yazıyoruz. Bu basit yol ile miras aldığımız sınıfın tüm özelliklerimizi kendi sınıfımızda kullanabiliyoruz.  Şimdi Mudur isimli sınıfımızın neler yapabildiğine bir bakalım:
+
+![Mudur_class](https://user-images.githubusercontent.com/59376910/153711711-3483f007-163b-49d7-a4d5-4cc6f04da463.png)
+
+Görüldüğü gibi Mudur sınıfında herhangi bir öznitelik veya metot tanımlamadan miras aldığımız sınıfın özniteliklerini ve metotlarını kullanabiliyoruz.
+
+Nesne tabanlı programlamanın en önemli konularından biri miras almadır. Kalıtım (miras alma) bizi kod tekrarından kurtarır ve kod okunabilirliğini iyileştirir. Peki miras aldığımız sınıfı değil de kendi sınıfımızın yapıcı fonksiyonunu tanımlayabilir miyiz? Evet tanımlayabiliriz. Paki nasıl? Hemen bir kod örneği ile açıklamaya çalışalım:
+
+![MUDUR1](https://user-images.githubusercontent.com/59376910/153711731-783c8069-8848-4c40-bc44-47a862634621.png)
+
+Yukardıki kodlarda olduğu gibi kendi yapıcı fonksiyonumuzu tanımladık ve ek __init__ fonksiyonumuza ek olarak personeller değişkenini parametre olarak atadık. Dikkat ettiyseni super adlı bir fonksiyon ile yapıcı fonksiyonumuz altında bir init fonksiyonu daha tanımladık. Bunu yapmamızın nedeni, kendi init fonksiyonumuzu tanımladığımızda derleyici artık içinde bulunduğumuz sınıfın (child class) __init__ fonksiyonunun içine bakacak. Yani biz ya burada kendi __init__ fonksiyonumuza atadığımız parametreleri yeniden miras aldığımız sınıftaki gibi tanımlayacağız ya da miras aldığımız sınıfta olan parametreleri hazır alıp, sadece ek olarak atadığımız parametreleri self parametresi ile tanımlarız. Biz burada mantıklı olan ikinci yöntemi kullandık. Yani burada aslında super() fonksiyonu miras aldığımız Personel sınıfını temsil ediyor. super() fonksiyonunun kullanımı da kodlarda gözüktüğü gibi super() deyip nokta erisim belirteci kullanarak miras aldığımız sınıfın __init__ fonksiyonunun aynısını buraya geçirmek olacaktır. super() fonksiyonunun miras aldığımız sınıfı temsil ettiğini unutmayalım. Dikkat ettiyseniz kendi sınıfımızda oluşturduğumuz __init__ fonksiyonu ile super() fonksiyonu ile çağırdığımız __init__ fonksiyonunun parametreleri aynı sırada yazılmış. Bu önemli bir ayrıntıdır. Nesne tabanlı programlamada bir sınıfı miras almışsak, nesne oluştururken miras almış olduğumuz sınıfı aynen tanımlayabilmemiz gerekir. Bu yüzden kendi __init__ fonksiyonlarınızı oluştururken miras aldığınız sınıftaki __init__fonksiyonunun yapısını bozmadan oluşturmanız gerekecektir. Yukarıdaki kodlarda personeller parametresine None değerini atamamızın temel nedir budur. Eğer None değerini atamasaydık bu sınıftan bir nesne oluşturduğumuzda miras aldığımız sınıftan nesne oluşturuyormuş gibi nesne oluşturamazdık. Burada super() fonksiyonu kullanırken self parametresini atamamıza gerek yok. Tabi alternatif olarak super() fonksiyonu yerine miras aldığınız sınıfın ismini kullanarak da __init__ fonksiyonunu çağırabilirsiniz. Eğer bu yolu seçerseniz bu sefer self parametresini kullanmanız gerekecektir. Sözün özü bir burada personel fonksiyonumuzun __init__ fonksiyonunu super() fonksiyonu sayesinde çağırdık ve kendi __init__ fonksiyonumuza atadığımız parametreleri arguman olarak da miras aldığımız sınıfın __init__ fonksiyonuna atadık. Bu şekilde isim soyisim ve maas bilgilerini yeniden tanımlamamıza gerek kalmadı, sadece ek olarak personeller değişkenini tanımlamamız gerekti. Şimdi Mudur sınıfımızından nesne oluşturalım:
+
+![mudur_nesnesi](https://user-images.githubusercontent.com/59376910/153711749-f60f02a1-6ab8-43cf-ba36-21c0cf821be2.png)
+
+Görüldüğü gibi Mudur sınıfını Personel sınıfı gibi kullanabiliyoruz. Şimdi de ek varsayılan değerini None olarak atadığımız personeller parametresine bir değer girelim ve bunu ekrana yazdıralım:
+
+Yukarıdaki örnekte de görüldüğü üzere md1 nesnesine Personel sınıfından farklı olarak Mudur sınıfına bir personel listesi atadık. Buradaki kritik nokta, Mudur sınıfını tanımlarken önceki örnekte olduğu gibi aynı zamanda Personel sınıfını tanımladığımız gibi de tanımlamamız gerekecektir, yani bu örneğimiz bahsettiğimiz kurala uymaktadır. Bu yüzden bir sınıfı kalıtım yoluyla miras alırken miras alınan sınıfı aynen kullanabilmemiz gerektiğinin farkında olmak önemlidir.
+
+# Python'da Override
+
+![MUDUR1 (2)](https://user-images.githubusercontent.com/59376910/153711828-aa6273fd-2538-48f5-8670-b5ed74e17c7d.png)
+
+Pyhton'da override işlemini anlamak için önce override kelimesinin anlamını bilmek konunun daha iyi anlaşılmasını sağlayacaktır. Override kelimesinin Türkçe karşılığı; geçersiz kılmak, üst üste binmek, ağır basmak, hükümsüz kılmak gibi anlamlara sahip. Nesne tabanlı programlama yaperken ve bir sınıfı kalıtım yoluyla miras alırken bazen miras aldığımız sınıf fonksiyonlarını veya özniteliklerini değiştirerek yeniden tanımlamamız gerekebilir. Biz bu işleme overriding adını veriyoruz. Python'da override etmek istediğimiz fonksiyonun ismini aynen yazarak tanımlamamız yeterli olacaktır. Fakat burada da önceden nesne tanımlarken bahsettiğimiz kurallar burada da ayen geçerli, yeniden tanımladığımız fonksiyon veya özellikler miras alınan sınıf gibi kullanılabilmesi gerekir. Aslında yukarıdaki Mudur sınıfına baktığnız zaman biz zam_orani değişkenini override etmişiz. Biz Mudur sınıfından bir nesne oluşturduğumuzda zam_orani değişkeninin değeri Personel sınıfındaki oran (1.05) değil 1.2 olarak güncellenecektir. Şimdi bir Personel ve bir Mudur nesnesi oluşturup bu nesnelere zam yapıp farkı görelim:
+
+![override](https://user-images.githubusercontent.com/59376910/153711836-5f2c0551-5611-486a-9938-0cd62d8a912d.png)
+
+Gördüğünüz üzere Mudur sınıfı ile oluşturduğumuz nesnenin zam oranı 1.2 olarak güncellenmiş. Bu nesneden zam_yap fonksiyonunu çağırdığımızda zam_yap fonksiyonu yeni zam oranı üzerinden zam uygulayacaktır, zira yukarıdaki örnekte de bunu görebiliyoruz. Her iki nesneye de 10000 birim maaş vermemize rağmen farklı oranlarda zam uygulanmış. Buna override denir.
