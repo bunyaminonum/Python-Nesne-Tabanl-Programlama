@@ -88,5 +88,41 @@ Python'da nesneye değer atama işlemi; "nesne_ismi.öznitelik_ismi = değer " �
 
 ![kabiliyetler](https://user-images.githubusercontent.com/59376910/153708372-a556003f-cdb6-4c84-80aa-668f8bd46cca.png)
 
+Görüldüğü üzere Ahmet'in kabiliyetleri tam olarak beklediğimiz gibi geldi, fakat Mehmet'e baktığımız zaman biz sadece Ahmet nesnesine kabiliyet eklemiştik ama Ahmet nesnesine eklediğimiz kabiliyet Mehmet nesnesine de eklenmiş. Peki neden?
 
+Sınıf yapısının en özemli özelliklerinden biri,  özniteliklere atanan değerlerin ve yapılabiliyorsa bu değerler üzerinde sonradan yapılan değişikliklerin diğer tüm nesneler üzeride yapılmasını sağlamaktır. İlgili sınıf özniteliği; karakter, demet veya sayı gibi değiştirilemeyen (ummutable) veri tipi ise, bu sınıf özniteliği üzerinde zaten herhangi bir değişiklik yapamazsınız. Yapabileceğiniz tek şey, ilgili özniteliği yeniden tanımlamak olacaktır. Ancak eğer sınıf niteliği liste, sözlük ve küme gibi değiştirilebilir (mutable) veri tipi ise bu öznitelik üzerinde yapacağınız değişiklikler sınıfa ait tüm nesneleri etkileyecektir. Bu özellik bazı durumlarda istenebilir veya istenmeyebilir önemli olan yazılan program, class yapısı ile yazılıyorsa bu bilginin farkında olunarak yazılmalı. Mesela kabiliyet örneğinde bu özellik istenmeyen sonuçlara neden olabilir çünkü her personelin kendine ait kabiliyetleri bulunur dolayısı ile bir personele eklenen özellik diğer personele de eklenmemeli veya kontrollü eklenmeli. Eğer bu bir personel listesi olsaydı belki de istediğimiz şey tam da bu özellik olurdu. 
 
+## Örnek Öznitelikleri ve __init__ Fonksiyonu
+Bildiğimiz üzere hiçbir fonksiyon kullanmadan sınıf içerisinde oluşturduğumuz özniteliklere sınıf öznitelikleri (class attribute) adını veriyorduk. Sınıf özniteliklerine dışarıdan erişebilir ve değerlerini değiştirebiliyorduk. Ayrıca liste, sözlük ve küme gibi değiştirilebilir veri tipleri üzerinde yaptığımız değişiklikler yeni oluşturulan tüm nesneleri etkiliyordu. Peki biz bu özniteliklerin sınıf çağrıldığında erişim sağlamak istesek ve aynı zamanda bu özniteliklere istediğimiz şekilde erişim izni sağlamak istesek ne yapacağız? İşte tam burada __init__ fonksiyonu imdadımıza yetişiyor. Bu fonksiyona teknik dilde constructor (yapıcı metod) adı verilir. Bu metod içerisinde tanımlanan özniteliklere ise örnek öznitelikler (instance attributes) adı verilir.
+
+ __init__ fonsksiyonda bulunan alt çizgiler onu özel bir fonksiyon yapmaktadır. Bu fonksiyonunun asıl görevi nesne (örn: Ahmet = Personel() ) ilk oluşturulduğu anda o fonksiyonda tanımlanan öznitelikleri ve gerçekleştirilecek işlemleri tanımlamaktır. Hatırlarsanız __init__ fonksiyonu tanımlamadan önce sınıf özniteliklerine erişmek için herhangi bir nesne tanımlamak gerekmiyordu. Fakat __init__ fonksiyonundaki özniteliklere erişmek için önce bir nesne tanımlamak durumundayız. Python'da yapıcı metod (__init__), şu şekilde tanımlanır:
+ 
+ ![constructor](https://user-images.githubusercontent.com/59376910/153708402-aca67819-ea14-4142-a2c3-4ffc1906b16b.png)
+
+__İnit__ fonksiyonunu tanımlarken  alt def anahtar kelimesini ayrı, içinde self bulunduran parantez yapısını birleşik yazmaya özen gösterelim.  Burada  self isminde bir parametreye ihtiyacımız var. Python nesne tabanlı programlamada belki de en çok kullanacağınız parametre self parametresi olacak. self parametresi, fonksiyonda parametreleri tanımlamak ve bu parametrelere erişmek için kullanılır. self yerine başka bir kelime de kullanabilirsiniz fakat kesinlikle önerilmez, çünkü Dünya'daki neredeyse tüm Python yazılımcıları self ismini kullanmaktadır. Kodunuz okunabilirliği açısından bu durum çok önemlidir. Şimdi instace attribute dediğimiz örnek özniteliklerimizi tanımlamaya başlayabiliriz:
+
+![init_nitelik_tanimlama](https://user-images.githubusercontent.com/59376910/153708414-2f1b39de-f1c3-46b4-8e86-f6063b911d5c.png)
+
+self parametresi kullanarak isim özniteliğimizi tanımladık şimdi bir Personel() nesnesi oluşturalım ve bu niteliğe erişmeye çalışalım:
+
+![ekrana_yazma](https://user-images.githubusercontent.com/59376910/153708434-8901d3cc-921e-462c-877c-cb1de96ba0ef.png)
+
+Yukarıdaki kodlarda per1 adında bir nesne oluşturduk ve bu nesneye önceden Personel sınıfımızdaki __init__ fonkisyonu içinde tanımladığımız isim özniteliğine erişmeye çalıştık. Gördüğünüz gibi kod başarılı bir şekilde çalıştı. Peki isim özniteliğimizi self parametresi olmadan aşağıdaki gibi tanımlasaydık isim özniteliğimize yine erilebilir miydik? Görelim:
+
+![hata_self](https://user-images.githubusercontent.com/59376910/153708449-e619136c-2847-4276-9141-cf1efeee2868.png)
+
+Görüldüğü üzere program, isim adında bir özelliğin olmadığını söyleyerek hata verdi. Bu hatanın nedeni tahmin ettiğiniz gibi isim özniteliğinin self parametresi almadığındandır, çünkü __init__ fonksiyonundaki özniteliklere erişmeyi sağlayan yapı self parametresidir. Sınıf içinde farklı fonksiyonlar tanımlarken de fonksiyon içinde bazen __init__ fonksiyonu içindeki özniteliklere erişmek gerekebilir. Burada da yine self parametresi sayesinde diğer fonksiyonlardan __init__ fonksiyonu içindeki özniteliklere erişim sağlayabiliyoruz.
+
+Yukardıki örneklerde init fonksiyonunu sadece self parametresi ile kullanmıştık. Elbette nesne ilk oluşturulduğunda o nesneye atamak istediğimiz özellikler olabilir. İşte bu özellikleri __init__ fonksiyonuna parametre olarak yollayabiliriz. Bunun nasıl yapıldığını görelim:
+
+![init_parametre_Atama](https://user-images.githubusercontent.com/59376910/153708584-7fc6a9d4-6896-459b-85ed-b48e1100cef4.png)
+
+⚠ Burada isim, soyisim ve maas bilgilerini self parametresi kullanarak değişkenlere atadığımıza dikkat edelim. Şimdi de bu bilgilerin içinden isim ve soyismini listeleyen tam_ad fonksiyonunu tanımlayalım:
+
+![tam_ad_fonks](https://user-images.githubusercontent.com/59376910/153708602-a3dff15e-4980-4d70-80d2-235381d67e1e.png)
+
+Görüldüğü gibi tam_ad fonksiyonu tanımlarken fonksiyonel yapıda kullandığımız klasik metod tanımlamayı burada da kullanıyoruz.  Bu şekilde tanımladığımız fonksiyonlara örnek metodları (instance methods) adı verilir. Örnek metod tanımlarken __init__ fonsiyonunda olduğu gibi bu fonksiyona, oluşturduğumuz nesneden erişebilmemiz için self parametresi kullanıyoruz. Aynı şekilde tam ad örnek metodunda olduğu gibi örnek niteliklere veya fonkisiyona parametre atamışsak bu parametrelere nesneden erişebilmek için yine self öneki kullanmamız gerekecektir. Şimdi iki tane nesne oluşturalım ve oluşturduğumuz nesnelerden tam_ad örnek metodumuzu çağıralım:
+
+![tam_ad_fonk_Call](https://user-images.githubusercontent.com/59376910/153708614-482d0da2-ce16-44b6-882a-b5122f263704.png)
+
+Unutulmamalıdır ki örnek öznitelikler (instance attributes) nesneye özel özniteliklerdir, yani farklı nesneler için aynı metod kullanılabilir fakat o metod o an kullanıldığı nesneye aittir. Farklı nesneleri etkilemez. Örnek özniteliklerini sınıf öznitelikler ile arasındaki en önemli farklardan biri budur. Yukarıdaki örnekte de olduğu gibi atanan isim, soyisim ve maaş bilgileri nesneye özel olarak atanır. Dolayısı ile o nesnelerdeki özellikleri değiştirme, silme veya güncelleme işlemlerini yapmak sadece nesnenin özelliklerini ilgilendirir. Diğer nesnelerde herhangi bir değişiklik meydana gelmez. Bu arada yukarı per1 ve per2 nesnelerini oluştururken Personle sınıfına atadığımız argümanların nereden geldiği hakkında bir fikir karışıklığı olmuş olabilir. Bu argümanlar __init__ fonksiyonuna atadığımız parametrelerden geliyor, yani Python'da __init__ fonksiyonuna hangi parametreler atanmışsa nesne oluştururken o an kullanılan sınıfa bu parametrelere argüman olarak değer atanır. Dilerseniz argümanlarınızı parametre ismi olmadan direkt yazabilirsiniz.
