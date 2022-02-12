@@ -14,4 +14,5 @@ Bu yazıda Python ile Nesne Tabanlı Programlama anlatılacak olup, konunun daha
 * Fonksiyonlar 
 * if, elif, else karar yapıları
 * Döngüler
+
 Not:  Bu derste fonksiyonlar için bazen metot bazen de fonksiyon ismi kullanılmıştır. İkisi de aynı anlama gelmektedir.
