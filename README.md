@@ -1,1 +1,1 @@
-# Python-Nesne-Tabanl-Programlama
+# Python-Nesne-Tabanlı-Programlama
