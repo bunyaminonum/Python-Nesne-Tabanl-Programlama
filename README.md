@@ -1,1 +1,1 @@
-# Python-Nesne-Tabanlı-Programlama
+# Python Nesne Tabanlı Programlama
